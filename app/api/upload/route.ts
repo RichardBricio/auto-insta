@@ -11,16 +11,13 @@ export async function POST(req: Request) {
       return new Response("No file provided", { status: 400 });
     }
 
-    // Gera nome 100% único
     const uniqueName = `${crypto.randomUUID()}-${file.name}`;
 
     const blob = await put(uniqueName, file, {
       access: "public",
     });
 
-    return Response.json({
-      url: blob.url
-    });
+    return Response.json({ url: blob.url });
 
   } catch (error) {
     console.error(error);
