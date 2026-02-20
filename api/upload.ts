@@ -21,9 +21,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }, 3600000)
 
     return res.json({
-      url: `${req.headers.host}/api/file/${id}`
+      url: `https://${req.headers.host}/api/file/${id}`
     })
   }
 
   res.status(405).end()
+
 }
