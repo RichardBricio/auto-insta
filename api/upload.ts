@@ -2,6 +2,12 @@ import { put } from '@vercel/blob';
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import crypto from 'crypto';
 
+export const config = {
+  api: {
+    bodyParser: false
+  }
+};
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
     return res.status(405).end();
@@ -19,7 +25,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const blob = await put(`uploads/${id}`, fileBuffer, {
     access: 'public',
     contentType: req.headers['content-type'] || 'application/octet-stream',
-    contentLength: fileBuffer.length   // 🔥 ESSA LINHA RESOLVE
+    addRandomSuffix: false
   });
 
   return res.status(200).json({
