@@ -10,11 +10,11 @@ export async function POST(req: Request) {
     return new Response("No file", { status: 400 });
   }
 
-  const blob = await put(file.name, file, {
-    access: "public",
-    addRandomSuffix: true,
-  });
-  
-  return Response.json(blob);
+  const uniqueName = `${crypto.randomUUID()}-${file.name}`;
 
+  const blob = await put(uniqueName, file, {
+    access: "public",
+  });
+
+  return Response.json(blob);
 }
