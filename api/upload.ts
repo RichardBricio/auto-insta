@@ -18,7 +18,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const blob = await put(`uploads/${id}`, fileBuffer, {
     access: 'public',
-    contentType: req.headers['content-type'] || 'application/octet-stream'
+    contentType: req.headers['content-type'] || 'application/octet-stream',
+    contentLength: fileBuffer.length   // 🔥 ESSA LINHA RESOLVE
   });
 
   return res.status(200).json({
