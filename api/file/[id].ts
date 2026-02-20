@@ -9,6 +9,7 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
 
   const file = global.storage[id as string]
 
-  res.setHeader('Content-Type', 'application/octet-stream')
+  res.setHeader('Content-Type', 'image/jpeg')
   res.send(file)
+
 }
