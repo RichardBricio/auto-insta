@@ -1,5 +1,15 @@
-"devDependencies": {
-  "typescript": "^5.3.3",
-  "@types/react": "^18.2.0",
-  "@types/node": "^20.11.0"
+{
+  "name": "auto-insta",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "14.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "@vercel/blob": "^0.23.0"
+  }
 }
